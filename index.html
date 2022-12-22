@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onsubmit="return handleSubmit(event)">
+        <label for="min">Minimum Değer</label><br>
+        <input type="range" min="0" max="100" name="min" id="min">
+        <input type="submit" value="Seç">
+        <span id="result1"></span>
+        <br>
+        <label for="max">Maksimum Değer</label><br>
+        <input type="range" min="0" max="100" name="max" id="max">
+        <input type="submit" value="Seç">
+        <span id="result2"></span><br><br>
+
+        <input type="submit" value="Üret" onclick="getRandomNumber()">
+        <hr>
+        <label for="random">Rastgele sayı: <span id="randomNumb"></span></label>
+    </form>
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            let minDeger = document.getElementById("min");
+            let maxDeger = document.getElementById("max");
+            let randomNumb = Math.floor(Math.random() * (Number(maxDeger.value) - Number(minDeger.value) + 1) + Number(
+                minDeger.value));
+
+            document.getElementById("result1").innerHTML = minDeger.value;
+            document.getElementById("result2").innerHTML = maxDeger.value;
+            document.getElementById("randomNumb").innerHTML = randomNumb
+        }
+    </script>
+</body>
+
+</html>
